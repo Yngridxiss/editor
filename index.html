@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Texto</title>
+    <style>
+        #editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 80%;
+            height: 300px;
+            overflow-y: auto;
+            margin: 20px auto;
+        }
+        .toolbar {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <button onclick="formatText('bold')">Negrito</button>
+    <button onclick="formatText('italic')">Itálico</button>
+    <button onclick="formatText('underline')">Sublinhado</button>
+    <button onclick="changeColor()">Cor do Texto</button>
+</div>
+
+<div id="editor" contenteditable="true">
+    Comece a digitar aqui...
+</div>
+
+<script>
+    function formatText(command) {
+        document.execCommand(command, false, null);
+    }
+
+    function changeColor() {
+        const color = prompt("Digite a cor (nome ou código hexadecimal):", "#ff0000");
+        if (color) {
+            document.execCommand('foreColor', false, color);
+        }
+    }
+</script>
+
+</body>
+</html>
